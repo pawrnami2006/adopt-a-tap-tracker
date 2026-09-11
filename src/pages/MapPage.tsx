@@ -35,6 +35,7 @@ export function MapPage() {
   const [isAddTapOpen, setIsAddTapOpen] = useState(false);
   const [isAddBathroomOpen, setIsAddBathroomOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [adoptedIds, setAdoptedIds] = useState<Set<string>>(new Set(['tap-1', 'bath-1']));
 
   // Profile alias state
   const [displayName, setDisplayName] = useState<string>(() => {
@@ -275,6 +276,38 @@ export function MapPage() {
         {activeTab === 'watchlist' && (
           <div className="w-full max-w-lg mx-auto px-4 pt-18 pb-24">
             <AdoptedTapsDashboard
+              items={[
+                ...taps
+                  .filter((t) => adoptedIds.has(t.id))
+                  .map((t) => ({
+                    id: t.id,
+                    point_type: 'tap' as const,
+                    name: t.description || 'Public Water Tap',
+                    location_desc: `${t.lat.toFixed(4)}, ${t.lng.toFixed(4)}`,
+                    status: t.status,
+                    is_verified: t.is_verified,
+                    pending_confirmations: t.pending_confirmations,
+                    last_verified: t.last_verified,
+                    photo_url: t.photo_urls[0],
+                    lat: t.lat,
+                    lng: t.lng,
+                  })),
+                ...bathrooms
+                  .filter((b) => adoptedIds.has(b.id))
+                  .map((b) => ({
+                    id: b.id,
+                    point_type: 'bathroom' as const,
+                    name: b.name || 'Public Restroom',
+                    location_desc: `${b.lat.toFixed(4)}, ${b.lng.toFixed(4)}`,
+                    status: b.status,
+                    is_verified: b.is_verified,
+                    pending_confirmations: b.pending_confirmations,
+                    last_verified: b.last_verified,
+                    photo_url: b.photo_urls[0],
+                    lat: b.lat,
+                    lng: b.lng,
+                  })),
+              ]}
               onViewOnMap={(lat, lng) => {
                 setCenter([lat, lng]);
                 setActiveTab('map');
@@ -419,8 +452,20 @@ export function MapPage() {
         point={selectedPoint}
         onClose={() => setSelectedPoint(null)}
         onReportStatus={handleReportStatus}
+        isAdopted={selectedPoint ? adoptedIds.has(selectedPoint.data.id) : false}
         onAdoptPoint={(type, id) => {
-          setToastMessage(`Adopted ${type} #${id.slice(-4)}! Guardian stewardship activated.`);
+          setAdoptedIds((prev) => {
+            const next = new Set(prev);
+            const isCurrentlyAdopted = next.has(id);
+            if (isCurrentlyAdopted) {
+              next.delete(id);
+              setToastMessage(`Removed ${type} #${id.slice(-4)} from Watchlist.`);
+            } else {
+              next.add(id);
+              setToastMessage(`Adopted ${type} #${id.slice(-4)}! Guardian stewardship activated.`);
+            }
+            return next;
+          });
         }}
         onAddPhoto={handleAddPhotoToSelected}
         hasVotedCurrentCycle={false}

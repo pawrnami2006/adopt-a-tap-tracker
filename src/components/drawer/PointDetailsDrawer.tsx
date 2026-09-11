@@ -16,6 +16,7 @@ interface PointDetailsDrawerProps {
   onReportStatus?: (status: PointStatus, cleanliness?: CleanlinessStatus) => void;
   onAdoptPoint?: (pointType: 'tap' | 'bathroom', pointId: string) => void;
   onAddPhoto?: (file: File, previewUrl: string) => void;
+  isAdopted?: boolean;
   hasVotedCurrentCycle?: boolean;
   userCurrentVote?: PointStatus | null;
   className?: string;
@@ -38,6 +39,7 @@ export function PointDetailsDrawer({
   onReportStatus,
   onAdoptPoint,
   onAddPhoto,
+  isAdopted = false,
   hasVotedCurrentCycle = false,
   userCurrentVote = null,
   className = '',
@@ -177,6 +179,7 @@ export function PointDetailsDrawer({
 
         {/* Condition Reporting Buttons */}
         <StatusButtons
+          key={point.data.id}
           pointType={point.type}
           pointId={point.data.id}
           currentStatus={status}
@@ -192,8 +195,10 @@ export function PointDetailsDrawer({
         {/* Bottom Actions Row: Adopt + Directions */}
         <div className="flex items-center gap-2.5 pt-1">
           <AdoptButton
+            key={point.data.id}
             pointType={point.type}
             pointId={point.data.id}
+            initialAdopted={isAdopted}
             onAdopt={onAdoptPoint}
             className="flex-1"
           />
