@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Droplets, Bath, Sparkles, X, CheckCircle, AlertTriangle, XCircle, ShieldCheck } from 'lucide-react';
+import { Droplets, Bath, Sparkles, X } from 'lucide-react';
 import { MapView } from '../components/map/MapView.tsx';
 import { LocateMeButton } from '../components/map/LocateMeButton.tsx';
 import { AddPointFAB } from '../components/map/AddPointFAB.tsx';
@@ -7,12 +7,15 @@ import { TopBar } from '../components/layout/TopBar.tsx';
 import { BottomNav, type NavTabId } from '../components/layout/BottomNav.tsx';
 import { AddTapForm, type AddTapFormData } from '../components/forms/AddTapForm.tsx';
 import { AddBathroomForm, type AddBathroomFormData } from '../components/forms/AddBathroomForm.tsx';
+import { PointDetailsDrawer, type DrawerPoint } from '../components/drawer/PointDetailsDrawer.tsx';
 import {
   INITIAL_MOCK_TAPS,
   INITIAL_MOCK_BATHROOMS,
   type TapItem,
   type BathroomItem,
   type MapFilterType,
+  type PointStatus,
+  type CleanlinessStatus,
 } from '../components/map/types.ts';
 
 export function MapPage() {
@@ -24,9 +27,7 @@ export function MapPage() {
   const [taps, setTaps] = useState<TapItem[]>(INITIAL_MOCK_TAPS);
   const [bathrooms, setBathrooms] = useState<BathroomItem[]>(INITIAL_MOCK_BATHROOMS);
 
-  const [selectedPoint, setSelectedPoint] = useState<
-    { type: 'tap'; data: TapItem } | { type: 'bathroom'; data: BathroomItem } | null
-  >(null);
+  const [selectedPoint, setSelectedPoint] = useState<DrawerPoint | null>(null);
 
   const [isAddTapOpen, setIsAddTapOpen] = useState(false);
   const [isAddBathroomOpen, setIsAddBathroomOpen] = useState(false);
@@ -105,70 +106,58 @@ export function MapPage() {
     setToastMessage('New public restroom mapped! 1 of 3 confirmations collected. +50 points held pending verification.');
   };
 
-  const handleReportStatus = (status: 'working' | 'issue' | 'broken') => {
+  const handleReportStatus = (status: PointStatus, cleanliness?: CleanlinessStatus) => {
     if (!selectedPoint) return;
 
     if (selectedPoint.type === 'tap') {
-      setTaps((prev) =>
-        prev.map((t) =>
-          t.id === selectedPoint.data.id
-            ? {
-                ...t,
-                status,
-                is_verified: false,
-                pending_status: status,
-                pending_confirmations: Math.min(3, t.pending_confirmations + 1),
-                last_verified: new Date().toISOString(),
-              }
-            : t
-        )
-      );
-      setSelectedPoint((prev) =>
-        prev && prev.type === 'tap'
-          ? {
-              ...prev,
-              data: {
-                ...prev.data,
-                status,
-                is_verified: false,
-                pending_status: status,
-                pending_confirmations: Math.min(3, prev.data.pending_confirmations + 1),
-                last_verified: new Date().toISOString(),
-              },
-            }
-          : prev
-      );
+      const updatedTap: TapItem = {
+        ...selectedPoint.data,
+        status,
+        is_verified: false,
+        pending_status: status,
+        pending_confirmations: Math.min(3, selectedPoint.data.pending_confirmations + 1),
+        last_verified: new Date().toISOString(),
+      };
+      setTaps((prev) => prev.map((t) => (t.id === selectedPoint.data.id ? updatedTap : t)));
+      setSelectedPoint({ type: 'tap', data: updatedTap });
     } else {
-      setBathrooms((prev) =>
-        prev.map((b) =>
-          b.id === selectedPoint.data.id
-            ? {
-                ...b,
-                status,
-                is_verified: false,
-                pending_status: status,
-                pending_confirmations: Math.min(3, b.pending_confirmations + 1),
-                last_verified: new Date().toISOString(),
-              }
-            : b
-        )
-      );
-      setSelectedPoint((prev) =>
-        prev && prev.type === 'bathroom'
-          ? {
-              ...prev,
-              data: {
-                ...prev.data,
-                status,
-                is_verified: false,
-                pending_status: status,
-                pending_confirmations: Math.min(3, prev.data.pending_confirmations + 1),
-                last_verified: new Date().toISOString(),
-              },
-            }
-          : prev
-      );
+      const updatedBath: BathroomItem = {
+        ...selectedPoint.data,
+        status,
+        cleanliness_status: cleanliness || selectedPoint.data.cleanliness_status,
+        is_verified: false,
+        pending_status: status,
+        pending_cleanliness: cleanliness || selectedPoint.data.cleanliness_status,
+        pending_confirmations: Math.min(3, selectedPoint.data.pending_confirmations + 1),
+        last_verified: new Date().toISOString(),
+      };
+      setBathrooms((prev) => prev.map((b) => (b.id === selectedPoint.data.id ? updatedBath : b)));
+      setSelectedPoint({ type: 'bathroom', data: updatedBath });
     }
+
+    setToastMessage('Condition report submitted! Logged for verification consensus.');
+  };
+
+  const handleAddPhotoToSelected = (_file: File, previewUrl: string) => {
+    if (!selectedPoint) return;
+
+    if (selectedPoint.type === 'tap') {
+      const updated = {
+        ...selectedPoint.data,
+        photo_urls: [previewUrl, ...selectedPoint.data.photo_urls],
+      };
+      setTaps((prev) => prev.map((t) => (t.id === selectedPoint.data.id ? updated : t)));
+      setSelectedPoint({ type: 'tap', data: updated });
+    } else {
+      const updated = {
+        ...selectedPoint.data,
+        photo_urls: [previewUrl, ...selectedPoint.data.photo_urls],
+      };
+      setBathrooms((prev) => prev.map((b) => (b.id === selectedPoint.data.id ? updated : b)));
+      setSelectedPoint({ type: 'bathroom', data: updated });
+    }
+
+    setToastMessage('Photo attached to community record!');
   };
 
   return (
@@ -259,118 +248,17 @@ export function MapPage() {
         />
       </div>
 
-      {/* Selected Point Bottom Sheet / Drawer */}
-      {selectedPoint && (
-        <div className="absolute bottom-20 inset-x-3 z-40 max-w-md mx-auto pointer-events-auto animate-in slide-in-from-bottom-5 duration-200">
-          <div
-            className="rounded-[28px] p-5 shadow-[0_-10px_36px_rgba(8,126,139,0.35)] text-white flex flex-col gap-3.5 border border-white/40"
-            style={{
-              background: 'linear-gradient(145deg, #087E8B 0%, #0B939E 50%, #0E767E 100%)',
-            }}
-          >
-            {/* Drag Handle & Close */}
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-1 rounded-full bg-white/40 mx-auto" />
-              <button
-                type="button"
-                onClick={() => setSelectedPoint(null)}
-                className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors"
-                aria-label="Close details"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Header: Title, Category & Status */}
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-[#53EBD2] border border-white/30 shrink-0">
-                  {selectedPoint.type === 'tap' ? (
-                    <Droplets className="w-6 h-6" />
-                  ) : (
-                    <Bath className="w-6 h-6" />
-                  )}
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5 text-xs text-[#A5F3FC] font-semibold uppercase tracking-wider">
-                    <span>
-                      {selectedPoint.type === 'tap'
-                        ? selectedPoint.data.tap_type.replace('_', ' ')
-                        : selectedPoint.data.is_free
-                        ? 'Free Restroom'
-                        : `Paid (${selectedPoint.data.price_note || 'Fee'})`}
-                    </span>
-                  </div>
-                  <h2 className="font-bold text-base leading-snug">
-                    {selectedPoint.type === 'tap'
-                      ? selectedPoint.data.description || 'Public Water Tap'
-                      : selectedPoint.data.name || 'Public Restroom'}
-                  </h2>
-                </div>
-              </div>
-
-              {/* Status Badge */}
-              <span
-                className={`px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide flex items-center gap-1 shadow-sm ${
-                  selectedPoint.data.status === 'working'
-                    ? 'bg-[#10B981] text-white'
-                    : selectedPoint.data.status === 'issue'
-                    ? 'bg-[#F59E0B] text-white'
-                    : 'bg-[#EF4444] text-white'
-                }`}
-              >
-                {selectedPoint.data.status.toUpperCase()}
-              </span>
-            </div>
-
-            {/* Verification Trust Badge */}
-            <div className="p-3 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#53EBD2]" />
-                <span className="font-semibold">
-                  {selectedPoint.data.is_verified
-                    ? 'Community Verified (3/3 consensus)'
-                    : `Pending Verification (${selectedPoint.data.pending_confirmations}/3)`}
-                </span>
-              </div>
-              <span className="text-[#A5F3FC] text-[11px]">
-                {selectedPoint.data.is_verified ? 'Verified' : 'Votes in progress'}
-              </span>
-            </div>
-
-            {/* Condition Reporting Buttons */}
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs text-white/90 font-medium">Quick Condition Update:</span>
-              <div className="grid grid-cols-3 gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleReportStatus('working')}
-                  className="py-2.5 rounded-xl bg-gradient-to-r from-[#53EBD2] to-[#41E2BA] text-[#03383a] text-xs font-bold flex items-center justify-center gap-1 shadow-sm active:scale-95 transition-all"
-                >
-                  <CheckCircle className="w-3.5 h-3.5" />
-                  Working
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleReportStatus('issue')}
-                  className="py-2.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center justify-center gap-1 border border-white/30 active:scale-95 transition-all"
-                >
-                  <AlertTriangle className="w-3.5 h-3.5 text-[#FBBF24]" />
-                  Issue
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleReportStatus('broken')}
-                  className="py-2.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center justify-center gap-1 border border-white/30 active:scale-95 transition-all"
-                >
-                  <XCircle className="w-3.5 h-3.5 text-[#F87171]" />
-                  Broken
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Shared Point Details Drawer */}
+      <PointDetailsDrawer
+        point={selectedPoint}
+        onClose={() => setSelectedPoint(null)}
+        onReportStatus={handleReportStatus}
+        onAdoptPoint={(type, id) => {
+          setToastMessage(`Adopted ${type} #${id.slice(-4)}! Guardian stewardship activated.`);
+        }}
+        onAddPhoto={handleAddPhotoToSelected}
+        hasVotedCurrentCycle={false}
+      />
 
       {/* Add Tap Modal Form */}
       <AddTapForm
