@@ -5,6 +5,8 @@ import { LocateMeButton } from '../components/map/LocateMeButton.tsx';
 import { AddPointFAB } from '../components/map/AddPointFAB.tsx';
 import { TopBar } from '../components/layout/TopBar.tsx';
 import { BottomNav, type NavTabId } from '../components/layout/BottomNav.tsx';
+import { AddTapForm, type AddTapFormData } from '../components/forms/AddTapForm.tsx';
+import { AddBathroomForm, type AddBathroomFormData } from '../components/forms/AddBathroomForm.tsx';
 import {
   INITIAL_MOCK_TAPS,
   INITIAL_MOCK_BATHROOMS,
@@ -26,7 +28,9 @@ export function MapPage() {
     { type: 'tap'; data: TapItem } | { type: 'bathroom'; data: BathroomItem } | null
   >(null);
 
-  const [promptAction, setPromptAction] = useState<string | null>(null);
+  const [isAddTapOpen, setIsAddTapOpen] = useState(false);
+  const [isAddBathroomOpen, setIsAddBathroomOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Initialize geolocation on mount
   useEffect(() => {
@@ -51,12 +55,54 @@ export function MapPage() {
     setZoom(16);
   };
 
-  const handleAddTap = () => {
-    setPromptAction('Adding a new Water Tap at your current map location. (Form opens in Phase 2)');
+  const handleCreateTap = (data: AddTapFormData) => {
+    const newTap: TapItem = {
+      id: `tap-${Date.now()}`,
+      lat: data.lat,
+      lng: data.lng,
+      tap_type: data.tap_type,
+      description: data.description || 'Public Water Tap',
+      status: 'working',
+      last_verified: new Date().toISOString(),
+      is_verified: false,
+      pending_status: 'working',
+      pending_confirmations: 1,
+      photo_urls: data.photoPreview ? [data.photoPreview] : [],
+      created_at: new Date().toISOString(),
+      synced: true,
+    };
+
+    setTaps((prev) => [newTap, ...prev]);
+    setSelectedPoint({ type: 'tap', data: newTap });
+    setToastMessage('New water tap added! 1 of 3 confirmations collected. +50 points held pending verification.');
   };
 
-  const handleAddBathroom = () => {
-    setPromptAction('Adding a new Restroom at your current map location. (Form opens in Phase 2)');
+  const handleCreateBathroom = (data: AddBathroomFormData) => {
+    const newBathroom: BathroomItem = {
+      id: `bath-${Date.now()}`,
+      lat: data.lat,
+      lng: data.lng,
+      name: data.name || 'Public Restroom',
+      is_free: data.is_free,
+      price_note: data.price_note,
+      is_accessible: data.is_accessible,
+      is_unisex: data.is_unisex,
+      has_baby_change: data.has_baby_change,
+      status: 'working',
+      cleanliness_status: data.cleanliness_status,
+      last_verified: new Date().toISOString(),
+      is_verified: false,
+      pending_status: 'working',
+      pending_cleanliness: data.cleanliness_status,
+      pending_confirmations: 1,
+      photo_urls: data.photoPreview ? [data.photoPreview] : [],
+      created_at: new Date().toISOString(),
+      synced: true,
+    };
+
+    setBathrooms((prev) => [newBathroom, ...prev]);
+    setSelectedPoint({ type: 'bathroom', data: newBathroom });
+    setToastMessage('New public restroom mapped! 1 of 3 confirmations collected. +50 points held pending verification.');
   };
 
   const handleReportStatus = (status: 'working' | 'issue' | 'broken') => {
@@ -207,8 +253,8 @@ export function MapPage() {
       <div className="absolute right-4 bottom-24 z-30 flex flex-col items-end gap-3 pointer-events-none">
         <LocateMeButton onLocate={handleLocate} className="pointer-events-auto" />
         <AddPointFAB
-          onAddTap={handleAddTap}
-          onAddBathroom={handleAddBathroom}
+          onAddTap={() => setIsAddTapOpen(true)}
+          onAddBathroom={() => setIsAddBathroomOpen(true)}
           className="pointer-events-auto"
         />
       </div>
@@ -326,13 +372,32 @@ export function MapPage() {
         </div>
       )}
 
-      {/* Action Notification Prompt Modal / Banner */}
-      {promptAction && (
+      {/* Add Tap Modal Form */}
+      <AddTapForm
+        isOpen={isAddTapOpen}
+        onClose={() => setIsAddTapOpen(false)}
+        onSubmit={handleCreateTap}
+        coords={{ lat: center[0], lng: center[1] }}
+      />
+
+      {/* Add Bathroom Modal Form */}
+      <AddBathroomForm
+        isOpen={isAddBathroomOpen}
+        onClose={() => setIsAddBathroomOpen(false)}
+        onSubmit={handleCreateBathroom}
+        coords={{ lat: center[0], lng: center[1] }}
+      />
+
+      {/* Success Notification Toast */}
+      {toastMessage && (
         <div className="fixed top-20 inset-x-4 z-50 max-w-sm mx-auto p-4 rounded-2xl bg-[#00696B] text-white shadow-2xl border border-[#42C6C9]/50 flex items-center justify-between gap-3 animate-in fade-in zoom-in-95 duration-150">
-          <p className="text-xs leading-relaxed font-medium">{promptAction}</p>
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-[#53EBD2] shrink-0" />
+            <p className="text-xs leading-relaxed font-medium">{toastMessage}</p>
+          </div>
           <button
             type="button"
-            onClick={() => setPromptAction(null)}
+            onClick={() => setToastMessage(null)}
             className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white shrink-0 hover:bg-white/30"
           >
             <X className="w-3.5 h-3.5" />
