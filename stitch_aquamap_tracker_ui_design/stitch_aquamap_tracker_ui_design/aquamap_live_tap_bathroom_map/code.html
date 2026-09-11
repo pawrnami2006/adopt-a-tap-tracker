@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-background": "#161d1d", "on-secondary-fixed-variant": "#004f53", "on-tertiary-fixed-variant": "#2b4c4f", "tertiary-container": "#98bbbe", "on-secondary-container": "#006e73", "status-warning-bg": "#FEF3C7", "tertiary-fixed-dim": "#aacdd0", "primary-container": "#42c6c9", "on-surface-variant": "#3c4949", "surface-dim": "#d4dbdb", "on-secondary": "#ffffff", tertiary: "#436467", "status-pending": "#8B5CF6", "on-primary-fixed": "#002021", "surface-tint": "#00696b", outline: "#6c7a7a", "outline-variant": "#bcc9c9", "on-tertiary-fixed": "#002022", background: "#f4fbfa", "inverse-on-surface": "#ebf2f1", "status-working-bg": "#E8F8EE", "on-primary": "#ffffff", "surface-container-high": "#e2eae9", "surface-container-low": "#eef5f4", "surface-container-lowest": "#ffffff", secondary: "#00696e", "tertiary-fixed": "#c6e9ec", "primary-fixed-dim": "#59d9dc", "inverse-surface": "#2b3231", "on-tertiary": "#ffffff", "surface-variant": "#dde4e3", "status-danger-bg": "#FEE2E2", "on-surface": "#161d1d", "text-muted": "#789092", "on-secondary-fixed": "#002022", "on-error": "#ffffff", "surface-container": "#e8efee", "primary-fixed": "#79f5f8", "inverse-primary": "#59d9dc", "secondary-fixed": "#9af1f7", "status-working": "#22C55E", "surface-container-highest": "#dde4e3", "on-error-container": "#93000a", "status-pending-bg": "#EDE9FE", "status-danger": "#EF4444", "on-primary-fixed-variant": "#004f51", surface: "#f4fbfa", "error-container": "#ffdad6", primary: "#00696b", "secondary-fixed-dim": "#7dd4da", "on-tertiary-container": "#2a4b4f", "surface-bright": "#f4fbfa", "status-warning": "#F59E0B", "on-primary-container": "#004f50", "secondary-container": "#97eef4", error: "#ba1a1a"}, borderRadius: {DEFAULT: "1rem", lg: "2rem", xl: "3rem", full: "9999px"}, spacing: {margin: "1rem", "space-lg": "1.5rem", "space-xl": "2rem", gutter: "1rem", "gutter-sm": "0.75rem", "gutter-lg": "1.5rem", "space-xs": "0.25rem", "margin-md": "1.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin-lg": "2rem"}, fontFamily: {"headline-md": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "display-lg-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-lg": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-sm": ["Inter"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"], label: ["Inter"]}, fontSize: {"headline-md": ["20px", {lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600"}], "label-lg": ["14px", {lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600"}], "display-lg-mobile": ["28px", {lineHeight: "36px", letterSpacing: "-0.015em", fontWeight: "700"}], "headline-sm": ["18px", {lineHeight: "24px", fontWeight: "600"}], "label-md": ["12px", {lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600"}], "body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "display-lg": ["36px", {lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "body-sm": ["12px", {lineHeight: "18px", fontWeight: "400"}], "headline-lg": ["24px", {lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700"}], "label-sm": ["11px", {lineHeight: "14px", letterSpacing: "0.03em", fontWeight: "600"}]}}}};</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-secondary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-2.5"><img alt="Adopt a Tap Tracker Logo" class="h-9 w-9 rounded-full object-cover shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9KRayebn-YD-mNSK7MGwUSpQ831VRUDaTuCOsxBhQuUXxXmoX6WTC36auoL_WP7YfJTR_ROQZC9OFOVrgTNoip_FIxunh4PnW6GmRpNsRrFGQ4zpM8fsUqgketiXb8x1iIk4GjVyRY9Mc45PqLZv1H7ZLw0Obq6WwzqWyumjGlRr3oAzX20OyRK-uW5jf5OfQgnLbLy8l3w8pW2zAgXSYTbidMWakn23vk7XrdxaN3MXn510E0esCV3gx5IjTbYWEIQ" style="background-color: rgb(181, 254, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none;"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Adopt a Tap Tracker</span><span class="font-label-sm text-label-sm text-text-muted">Map</span></div></div><div class="flex items-center gap-2"><button aria-label="Notifications" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-9 h-9 rounded-full overflow-hidden shrink-0 shadow-sm border border-white/80"><img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSfIrE76sZwSmElKg-Yi93Owx2TSLm0atZ6PonekJ_x4IZxsEcCmGBcEOoA0vSIQKI7jJ_NyOrHhn8MZzRdrkjcartS0Al4eu0804LSvZ4WvwJqL83GfTXNm_n22aDg39I0ZZYZ4MV9yob0MJdujNexcrFDpgdCqadPRqCYijAXGoKGArrTE-LwYpN20Y2xvsLlH3YTycEz8gA6kVmHsPyFjOUhRpmcRbyEJnATIcDQj3hf5W_BPk2jc7A0uchEAVpDg"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-surface"><div class="flex flex-col w-full relative select-none">
+<!-- Map Background Canvas Simulated Layer -->
+<div class="relative w-full h-[740px] overflow-hidden bg-[#eaf3f2]">
+<!-- Vector Map Simulation Elements (Parks, Waterways, Arteries) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="xMidYMid slice" viewbox="0 0 400 740" xmlns="http://www.w3.org/2000/svg">
+<!-- Water body (River / Lake) -->
+<path d="M-20,180 C80,210 140,140 220,190 C300,240 340,180 430,220 L430,340 C340,310 260,370 190,320 C120,280 50,340 -20,300 Z" fill="#cbeff1" opacity="0.85"></path>
+<path d="M120,540 C190,510 260,560 320,530 C370,510 400,530 430,520 L430,640 C370,660 300,600 240,630 C170,660 110,610 -20,670 L-20,570 C40,560 80,560 120,540 Z" fill="#d2f4f4" opacity="0.6"></path>
+<!-- Urban Parks / Green Reserves -->
+<path d="M30,70 C90,60 150,80 160,140 C170,200 110,240 40,220 C10,200 -10,140 30,70 Z" fill="#d8ede2" opacity="0.9"></path>
+<path d="M220,380 C290,360 380,390 370,470 C360,540 280,550 230,510 C190,470 190,400 220,380 Z" fill="#d8ede2" opacity="0.9"></path>
+<!-- Road Arterials -->
+<path d="M-30,420 L430,120" stroke="#ffffff" stroke-linecap="round" stroke-width="14"></path>
+<path d="M-30,420 L430,120" stroke="#e0ecea" stroke-linecap="round" stroke-width="8"></path>
+<path d="M180,-20 L240,760" stroke="#ffffff" stroke-linecap="round" stroke-width="18"></path>
+<path d="M180,-20 L240,760" stroke="#e0ecea" stroke-linecap="round" stroke-width="10"></path>
+<path d="M-20,190 Q200,260 420,380" fill="none" stroke="#ffffff" stroke-width="12"></path>
+<path d="M-20,190 Q200,260 420,380" fill="none" stroke="#e0ecea" stroke-width="7"></path>
+<path d="M70,300 C150,300 220,240 380,260" fill="none" stroke="#ffffff" stroke-width="9"></path>
+<path d="M70,300 C150,300 220,240 380,260" fill="none" stroke="#e5f0ee" stroke-width="5"></path>
+<!-- Minor Streets -->
+<path d="M80,100 L160,250 M140,80 L220,180 M240,320 L380,320 M50,490 L240,490 M270,440 L410,560" stroke="#edf5f4" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<!-- Floating Top Header Capsule -->
+<div class="absolute top-4 inset-x-4 z-20 flex items-center justify-between gap-2">
+<!-- Left Glass Brand Badge -->
+<div class="flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_8px_24px_rgba(24,58,61,0.08)]" style="background-color: rgb(181, 254, 255); box-shadow: rgba(22, 125, 131, 0.22) 0px 14px 28px -6px, rgba(22, 125, 131, 0.16) 0px 6px 14px -3px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none;">
+<img alt="Adopt a Tap Tracker Logo" class="w-9 h-9 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChZJRqorepjfI_h8KUGoED-U4P-2-FJcZpGNrpyyNfS12kTCJU5Z-fPu_bgvxM8yZLc-BhfyoT5bPr2FHOq3FsJkaj4QXTE_rlKicyuyv7_lP1jPDNHXFUTnszsgUlzUPeoMbeYmM_aZIDGJ9W-6cRuERK-BgBCTEOl1o67SCjgdOjZHXs-ObNISHGrUqW2eRbntm_wUQ3J-bJ_FS3_OtAyxfVJTXdIzAr1tWnJgyQRSUk0bjupDk7LDNiQexa66bekg" style="background-color: rgb(181, 254, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none;"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Adopt a Tap Tracker</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted mt-0.5 font-medium">Civic Tap Tracker</span>
+</div>
+</div>
+<!-- Right Sync Status Pill -->
+<button aria-label="Cloud sync status" class="flex items-center gap-2 px-3 py-2 rounded-full bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_8px_24px_rgba(24,58,61,0.08)] active:scale-95 transition-transform" id="syncToggle" style="box-shadow: rgba(22, 125, 131, 0.16) 0px 8px 18px, rgba(255, 255, 255, 0.85) 0px 2px 3px inset, rgba(0, 0, 0, 0.04) 0px -2px 3px inset; border: 1.5px solid rgba(255, 255, 255, 0.7);">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-working opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-status-working"></span>
+</span>
+<span class="font-label-md text-label-md text-secondary font-semibold" id="syncText">All synced</span>
+</button>
+</div>
+<!-- Floating Filter Controls -->
+<div class="absolute top-20 inset-x-4 z-20 flex items-center justify-center">
+<div class="p-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_10px_28px_rgba(24,58,61,0.1)] flex items-center gap-1" style="background: linear-gradient(135deg, rgba(245, 254, 254, 0.95) 0%, rgba(214, 246, 248, 0.95) 100%); box-shadow: rgba(22, 125, 131, 0.22) 0px 14px 28px -6px, rgba(22, 125, 131, 0.16) 0px 6px 14px -3px, rgba(255, 255, 255, 0.9) 0px 2px 4px inset, rgba(0, 105, 107, 0.08) 0px -2px 3px inset; border: 1.5px solid rgba(255, 255, 255, 0.9);">
+<!-- Tap Chip (Selected: Tactile Clay Aqua) -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-[inset_0_1px_2px_rgba(255,255,255,0.4),0_3px_8px_rgba(0,105,107,0.25)] transition-all" style="box-shadow: rgba(0, 105, 107, 0.35) 0px 6px 14px, rgba(255, 255, 255, 0.55) 0px 2px 3px inset, rgba(0, 0, 0, 0.15) 0px -2px 3px inset;">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="">Taps (18)</span>
+</button>
+<!-- Bathrooms Chip (Unselected Glass) -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low/60 text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[15px]">wc</span>
+<span class="">Bathrooms (12)</span>
+</button>
+<!-- Both Chip (Unselected Glass) -->
+<button class="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-surface-container-low/60 text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+<span class="">Both</span>
+</button>
+</div>
+</div>
+<!-- Map Markers Layer -->
+<div class="absolute inset-0 z-10 pointer-events-auto">
+<!-- Tap 1: Selected MG Road Park (Working, Verified 3/3, Ripple Effect) -->
+<div class="absolute top-[285px] left-[175px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group">
+<!-- Ripple halo -->
+<div class="absolute -inset-3 rounded-full bg-status-working/20 animate-ping pointer-events-none"></div>
+<div class="absolute -inset-1.5 rounded-full bg-status-working/30 pointer-events-none"></div>
+<!-- Tactile Clay Droplet Marker Pin -->
+<div class="relative z-10 w-11 h-11 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-on-primary shadow-[0_8px_20px_rgba(0,105,107,0.35),inset_0_2px_2px_rgba(255,255,255,0.6)]">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<!-- Verification Pill Tag -->
+<span class="absolute -top-1.5 -right-2 px-1.5 py-0.5 rounded-full bg-status-working text-on-primary font-label-sm text-[10px] font-bold shadow-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">verified</span>3/3
+          </span>
+</div>
+<!-- Selected Label Chip -->
+<div class="mt-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-md text-center">
+<span class="font-label-md text-label-md text-on-surface font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-status-working"></span>
+            MG Road Tap
+          </span>
+</div>
+</div>
+<!-- Tap 2: Library Plaza (Pending Verification 2/3) -->
+<div class="absolute top-[135px] left-[78px] flex flex-col items-center cursor-pointer group active:scale-95 transition-transform">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center text-status-pending shadow-[0_6px_16px_rgba(139,92,246,0.18)]">
+<!-- Pending dashed aura ring -->
+<div class="absolute inset-0 rounded-full bg-status-pending-bg/50"></div>
+<span class="material-symbols-outlined text-[18px] relative z-10" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="absolute -top-1 -right-1 px-1 rounded-full bg-status-pending text-on-primary font-label-sm text-[9px] font-bold">2/3</span>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-[11px] font-medium shadow-sm">
+          Library Plaza
+        </span>
+</div>
+<!-- Tap 3: Metro Restroom Sink (Issue Reported) -->
+<div class="absolute top-[195px] right-[48px] flex flex-col items-center cursor-pointer group active:scale-95 transition-transform">
+<div class="relative w-9 h-9 rounded-full bg-status-warning-bg flex items-center justify-center text-status-warning shadow-[0_6px_16px_rgba(245,158,11,0.22)]">
+<span class="material-symbols-outlined text-[19px]">report_problem</span>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded-full bg-surface-container-lowest/85 text-on-surface-variant font-label-sm text-[11px] font-medium shadow-sm">
+          Metro Sink
+        </span>
+</div>
+<!-- Bathroom 1: City Center (Working & Clean, Accessible) -->
+<div class="absolute top-[365px] left-[52px] flex flex-col items-center cursor-pointer group active:scale-95 transition-transform">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary shadow-[0_6px_16px_rgba(0,105,110,0.18)]">
+<span class="material-symbols-outlined text-[19px]">wc</span>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px]">
+<span class="material-symbols-outlined text-[11px]">accessible</span>
+</span>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded-full bg-surface-container-lowest/85 text-on-surface-variant font-label-sm text-[11px] font-medium shadow-sm">
+          City Center Restroom
+        </span>
+</div>
+<!-- Bathroom 2: South Terminal (Broken / Dirty Coral Marker) -->
+<div class="absolute top-[330px] right-[40px] flex flex-col items-center cursor-pointer group active:scale-95 transition-transform">
+<div class="relative w-9 h-9 rounded-full bg-status-danger-bg flex items-center justify-center text-status-danger shadow-[0_6px_16px_rgba(239,68,68,0.2)]">
+<span class="material-symbols-outlined text-[19px]">cancel</span>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded-full bg-surface-container-lowest/85 text-status-danger font-label-sm text-[11px] font-medium shadow-sm">
+          South Terminal
+        </span>
+</div>
+</div>
+<!-- Floating Action Speed Dial (FAB with expanding sub-pills) -->
+<div class="absolute right-4 bottom-72 z-30 flex flex-col items-end gap-2.5">
+<!-- Sub-Action 1: Add Bathroom -->
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_6px_18px_rgba(24,58,61,0.14)] text-on-surface hover:bg-surface-container-low transition-all active:scale-95 group" style="box-shadow: rgba(0, 105, 110, 0.2) 0px 8px 18px, rgba(255, 255, 255, 0.8) 0px 2px 3px inset, rgba(0, 0, 0, 0.05) 0px -2px 3px inset; border: 1.5px solid rgba(255, 255, 255, 0.7);">
+<span class="font-label-md text-label-md font-semibold text-secondary">Add Bathroom</span>
+<div class="w-7 h-7 rounded-full bg-secondary/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">wc</span>
+</div>
+</button>
+<!-- Sub-Action 2: Add Tap -->
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_6px_18px_rgba(24,58,61,0.14)] text-on-surface hover:bg-surface-container-low transition-all active:scale-95 group" style="box-shadow: rgba(0, 105, 107, 0.22) 0px 8px 18px, rgba(255, 255, 255, 0.8) 0px 2px 3px inset, rgba(0, 0, 0, 0.05) 0px -2px 3px inset; border: 1.5px solid rgba(255, 255, 255, 0.7);">
+<span class="font-label-md text-label-md font-semibold text-primary">Add Tap</span>
+<div class="w-7 h-7 rounded-full bg-primary/15 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">water_drop</span>
+</div>
+</button>
+<!-- Main Tactile Clay FAB -->
+<button aria-label="Add resource" class="w-14 h-14 rounded-full bg-gradient-to-br from-primary-container via-primary to-secondary text-on-primary flex items-center justify-center shadow-[0_10px_24px_rgba(0,105,107,0.35),inset_0_2px_3px_rgba(255,255,255,0.6)] active:scale-95 transition-transform" style="background: linear-gradient(135deg, rgb(8, 126, 139) 0%, rgb(11, 147, 158) 100%); color: rgb(255, 255, 255); border: 1.5px solid rgba(255, 255, 255, 0.4); box-shadow: rgba(8, 126, 139, 0.45) 0px 10px 24px -2px, rgba(255, 255, 255, 0.5) 0px 2px 3px inset, rgba(0, 0, 0, 0.15) 0px -2px 3px inset;">
+<span class="material-symbols-outlined text-[28px] font-bold">add</span>
+</button>
+</div>
+</div>
+<!-- Open Point Details Bottom Sheet (Anchored floating glass container) -->
+<div class="relative z-30 -mt-64 px-3 w-full max-w-md mx-auto">
+<div class="rounded-t-[32px] rounded-b-[24px] bg-surface-container-lowest/95 backdrop-blur-2xl shadow-[0_-12px_40px_rgba(24,58,61,0.16)] p-5 pb-6 flex flex-col gap-4" style="background: linear-gradient(145deg, rgb(8, 126, 139) 0%, rgb(11, 147, 158) 50%, rgb(14, 118, 126) 100%); border: 1.5px solid rgba(255, 255, 255, 0.35); box-shadow: rgba(8, 126, 139, 0.4) 0px -10px 36px, rgba(255, 255, 255, 0.4) 0px 2px 4px inset, rgba(0, 0, 0, 0.15) 0px -2px 3px inset;">
+<!-- Drag Handle -->
+<div class="w-12 h-1.5 rounded-full bg-surface-dim mx-auto shrink-0" style="background-color: rgba(255, 255, 255, 0.45); box-shadow: rgba(8, 126, 139, 0.3) 0px 1px 2px;"></div>
+<!-- Header: Type, Title, Location & Quick Guardian Crest -->
+<div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3"><div class="w-14 h-14 rounded-2xl overflow-hidden shrink-0 shadow-lg" style="background-color: rgb(181, 254, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 22px -4px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none;"><img alt="Diamond Droplet" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArzLT-JFdM1x_k7WUkbpoa8SfDGpk3DHHmBxrvD__kObJOhBvYvpgVH3r6RxS-KDYnKcj1ulpkhsQ3EJjUidrshO9IFIgbRfXDBOAlhJEjYFyPJo6qxUHSIcy_zvMjoszCsQ36LvhWpPrQ9WsP3te38EiNOlnfOR3Puzd6fPN2HhIMMmD-rb8QApLWsSrjANEiBeOvLu_-tU2rGedl52EeEnyjLlhvXkwI5_dDdRBea7uPxqze1NwSh6CFMV84v9aGrw"/></div><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-label-sm text-label-sm uppercase tracking-wider font-bold" style="color: #79F5F8;">Community Tap</span><span class="w-1 h-1 rounded-full" style="background-color: rgba(255,255,255,0.4);"></span><span class="font-label-sm text-label-sm" style="color: #A3E8EB;">Potable</span></div><span class="font-headline-sm text-headline-sm text-white font-bold leading-tight">MG Road Park Fountain</span><span class="font-body-sm text-body-sm" style="color: #A3E8EB;">Sector 4, Central Promenade</span></div></div><div class="flex flex-col items-end"><span class="font-label-md text-label-md font-bold" style="color: #59D9DC;">85m</span><span class="font-label-sm text-label-sm" style="color: #A3E8EB;">2 min walk</span></div></div>
+<!-- Verification Engine Card (Prominent Civic Trust Layer) -->
+<div class="p-3.5 rounded-2xl flex flex-col gap-3" style="background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.28); box-shadow: rgba(8, 126, 139, 0.2) 0px 6px 16px, rgba(255, 255, 255, 0.35) 0px 1px 2px inset;"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-status-working/20 text-status-working font-label-md text-label-md font-bold" style="border: 1px solid rgba(34, 197, 94, 0.3);"><span class="material-symbols-outlined text-[15px]">verified</span><span class="">COMMUNITY VERIFIED</span></div><div class="flex items-center gap-1.5 font-label-sm text-label-sm" style="color: #A3E8EB;"><span class="w-2 h-2 rounded-full bg-status-working animate-pulse"></span><span class="">Verified 12m ago</span></div></div><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between relative px-2"><div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-primary-container to-status-working z-0 rounded-full"></div><div class="relative z-10 flex flex-col items-center gap-1"><div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[13px] shadow-sm font-bold"><span class="material-symbols-outlined text-[14px]">check</span></div><span class="font-label-sm text-[10px] text-white/90 font-medium">Reporter</span></div><div class="relative z-10 flex flex-col items-center gap-1"><div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[13px] shadow-sm font-bold"><span class="material-symbols-outlined text-[14px]">check</span></div><span class="font-label-sm text-[10px] text-white/90 font-medium">Guardian</span></div><div class="relative z-10 flex flex-col items-center gap-1"><div class="w-6 h-6 rounded-full bg-status-working text-on-primary flex items-center justify-center text-[13px] shadow-sm"><span class="material-symbols-outlined text-[14px]">done_all</span></div><span class="font-label-sm text-[10px] text-status-working font-bold">You (Confirmed)</span></div></div><p class="font-body-sm text-[11px] text-center mt-1 leading-snug" style="color: #A3E8EB;">Consensus confirmed by 3 local citizens. <span class="font-semibold" style="color: #79F5F8;">+50 community points unlocked!</span></p></div></div>
+<!-- Status Reporting Clay Action Toggles -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between"><span class="font-label-md text-label-md text-white font-semibold">Report Current Condition</span><span class="font-label-sm text-[11px]" style="color: rgb(163, 232, 235);">Vote locked for today</span></div>
+<div class="grid grid-cols-3 gap-2">
+<!-- Button: Working (Active Pressed State) -->
+<button class="h-12 rounded-xl bg-status-working text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-[inset_2px_2px_4px_rgba(0,50,20,0.25)] transition-all" style="background: linear-gradient(135deg, rgb(83, 235, 210) 0%, rgb(65, 226, 186) 100%); color: rgb(3, 56, 58); box-shadow: rgba(8, 126, 139, 0.4) 0px 8px 20px -4px, rgba(255, 255, 255, 0.85) 0px 2px 4px inset; border: 1px solid rgba(255, 255, 255, 0.6);">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="">Working</span>
+</button>
+<!-- Button: Issue (Soft Amber Clay) -->
+<button class="h-12 rounded-xl bg-gradient-to-b from-surface-container-lowest to-surface-container-high text-status-warning hover:bg-status-warning-bg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-[0_3px_8px_rgba(24,58,61,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] active:scale-98 transition-all" style="background: rgba(255, 255, 255, 0.12); box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px, rgba(255, 255, 255, 0.2) 0px 1px 2px inset; border: 1px solid rgba(255, 255, 255, 0.25);">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span class="">Issue</span>
+</button>
+<!-- Button: Broken (Soft Red Clay) -->
+<button class="h-12 rounded-xl bg-gradient-to-b from-surface-container-lowest to-surface-container-high text-status-danger hover:bg-status-danger-bg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-[0_3px_8px_rgba(24,58,61,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] active:scale-98 transition-all" style="background: rgba(255, 255, 255, 0.12); box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px, rgba(255, 255, 255, 0.2) 0px 1px 2px inset; border: 1px solid rgba(255, 255, 255, 0.25);">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span class="">Broken</span>
+</button>
+</div>
+</div>
+<!-- Photo Verification Strip -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between"><span class="font-label-md text-label-md text-white font-semibold">Recent Community Photos</span><span class="font-label-sm text-label-sm font-medium" style="color: rgb(121, 245, 248);">View all (8)</span></div>
+<div class="flex items-center gap-2.5 overflow-x-auto pb-1">
+<!-- Photo Thumbnail 1 -->
+<div class="relative w-24 h-20 rounded-xl overflow-hidden shrink-0 shadow-sm" style="box-shadow: rgba(22, 125, 131, 0.22) 0px 8px 18px, rgba(255, 255, 255, 0.7) 0px 2px 3px inset; border: 2.5px solid rgb(255, 255, 255);">
+<img class="w-full h-full object-cover" data-alt="A clean modern stainless steel public drinking tap in a sunny city park with crystal clear drinking water smoothly flowing into a curved catch basin, soft morning light, teal park benches in background, photorealistic civic beauty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXQ01-S_LTeJmtbKZ1K3SULcoBvGsSyWA-zM4prNYIzvBDqhkHFB5HlW1ETPwSlISH8RYD0RGSCFh_59Z4_xZUy_rn0IQn47tL-jOF7WxgNNZj9Zx1j_yUWpy8VwW16ObcwiUjbUuaknojRu1lCF6AoqHG57co2ynWjnUouzozcgoq5oe_nG436kZIBEEpNgIdcHGTBVvpiJl0pyb1_Mr21IUDI5RHLI2R18T7NG7YicwCUdMOv9vG"/>
+<div class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-[9px]">
+              Today
+            </div>
+</div>
+<!-- Photo Thumbnail 2 -->
+<div class="relative w-24 h-20 rounded-xl overflow-hidden shrink-0 shadow-sm" style="box-shadow: rgba(22, 125, 131, 0.22) 0px 8px 18px, rgba(255, 255, 255, 0.7) 0px 2px 3px inset; border: 2.5px solid rgb(255, 255, 255);">
+<img class="w-full h-full object-cover" data-alt="Polished brass civic public water dispenser spout with sparkling fresh water stream, surrounded by lush green garden foliage and clean river stone tile base, natural sunny daylight, architectural details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB840BMC0kdyo0W614XRSBmoEm12mUvdcIO6mxFNTkDUZPV4L53HaDS42lDNRIMCGgeYsHvN3SutrIEDtHyHHmycRDnLvfPdO-7BzX86cw_tRuLp_3pCwSyAiw30cM5P8mXwpIAQ-DGksJ2Y1bkhZUIg-roe7Hyac58k3XvaXQ2knuUmNpsgKWYp46FDkpru27_Hmk0r-tAvBvNwgvSoijsmIIBBKceIG2PcD7mN8xuLdIN4LIbEbz8"/>
+<div class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-[9px]">
+              2d ago
+            </div>
+</div>
+<!-- Add Photo CTA Tile -->
+<button aria-label="Upload photo verification" class="w-24 h-20 rounded-xl flex flex-col items-center justify-center gap-1 shrink-0 active:scale-95 transition-all" style="background: rgba(255, 255, 255, 0.12); box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 14px, rgba(255, 255, 255, 0.2) 0px 1px 2px inset; border: 1.5px dashed rgba(255, 255, 255, 0.4);"><div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: rgba(121, 245, 248, 0.2); color: #79F5F8;"><span class="material-symbols-outlined text-[18px]">add_a_photo</span></div><span class="font-label-sm text-[10px] font-bold text-white">Add photo</span></button>
+</div>
+</div>
+<!-- Bottom Dual Action Row -->
+<div class="flex items-center gap-2.5 pt-1">
+<!-- Adopted Tap Guardian Badge / Action -->
+<button class="flex-1 h-12 rounded-2xl bg-gradient-to-r from-surface-container-lowest to-surface-container-low text-on-surface flex items-center justify-center gap-2 font-label-md text-label-md font-bold shadow-[0_4px_12px_rgba(24,58,61,0.06),inset_0_1px_2px_rgba(255,255,255,1)] active:scale-98 transition-all" style="background: rgba(255, 255, 255, 0.18); color: rgb(255, 255, 255); border: 1.5px solid rgba(255, 255, 255, 0.4); box-shadow: rgba(8, 126, 139, 0.25) 0px 6px 16px, rgba(255, 255, 255, 0.35) 0px 2px 3px inset;">
+<span class="material-symbols-outlined text-[20px] text-status-warning" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="">Adopted (Guardian)</span>
+</button>
+<!-- Get Directions Hero Clay Button -->
+<button class="flex-1 h-12 rounded-2xl bg-gradient-to-r from-primary to-secondary text-on-primary flex items-center justify-center gap-2 font-label-md text-label-md font-bold shadow-[0_6px_20px_rgba(0,105,107,0.3),inset_0_1px_2px_rgba(255,255,255,0.4)] active:scale-98 transition-all" style="background: linear-gradient(135deg, rgb(83, 235, 210) 0%, rgb(65, 226, 186) 100%); color: rgb(3, 56, 58); border: 1.5px solid rgba(255, 255, 255, 0.7); box-shadow: rgba(8, 126, 139, 0.45) 0px 8px 22px -4px, rgba(255, 255, 255, 0.85) 0px 2px 4px inset;">
+<span class="material-symbols-outlined text-[20px]">directions_walk</span>
+<span class="">Directions</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for sync toggle demo
+  const syncToggle = document.getElementById('syncToggle');
+  const syncText = document.getElementById('syncText');
+  let isSynced = true;
+
+  if (syncToggle && syncText) {
+    syncToggle.addEventListener('click', () => {
+      isSynced = !isSynced;
+      if (!isSynced) {
+        syncText.textContent = 'Syncing (1 queued)';
+        syncText.classList.replace('text-secondary', 'text-status-warning');
+      } else {
+        syncText.textContent = 'All synced';
+        syncText.classList.replace('text-status-warning', 'text-secondary');
+      }
+    });
+  }
+</script></main><div class="fixed bottom-5 inset-x-0 z-40 px-4 pointer-events-none pb-safe"><nav class="pointer-events-auto max-w-sm mx-auto backdrop-blur-xl bg-surface-container-lowest/85 shadow-[0_12px_32px_rgba(24,58,61,0.12)] rounded-full py-2 px-3 flex items-center justify-around" data-active-classes="bg-gradient-to-r from-primary/15 to-primary-container/20 text-primary shadow-sm rounded-full px-3.5 py-1.5 font-headline-sm text-label-md flex items-center gap-1.5"><a aria-current="page" class="min-w-[44px] min-h-[44px] justify-center transition-all duration-200 bg-gradient-to-r from-[#087E8B]/15 to-[#53EBD2]/30 text-[#087E8B] shadow-sm rounded-full px-3.5 py-1.5 font-headline-sm text-label-md flex items-center gap-1.5 border border-[#087E8B]/20" data-path="map" href="#"><span class="material-symbols-outlined text-[20px]">map</span><span class="">Map</span></a><a class="min-w-[44px] min-h-[44px] px-2.5 py-1.5 text-text-muted hover:text-on-surface flex flex-col items-center justify-center gap-0.5 font-label-sm text-label-sm transition-all duration-200" data-path="leaderboard" href="#"><span class="material-symbols-outlined text-[20px]">leaderboard</span><span class="">Rank</span></a><a class="min-w-[44px] min-h-[44px] px-2.5 py-1.5 text-text-muted hover:text-on-surface flex flex-col items-center justify-center gap-0.5 font-label-sm text-label-sm transition-all duration-200" data-path="watchlist" href="#"><span class="material-symbols-outlined text-[20px]">bookmark_added</span><span class="">Watchlist</span></a><a class="min-w-[44px] min-h-[44px] px-2.5 py-1.5 text-text-muted hover:text-on-surface flex flex-col items-center justify-center gap-0.5 font-label-sm text-label-sm transition-all duration-200" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">account_circle</span><span class="">Profile</span></a></nav></div>
+</body></html>
