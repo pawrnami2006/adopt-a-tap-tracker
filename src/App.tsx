@@ -1,9 +1,8 @@
+import 'leaflet/dist/leaflet.css'
+import { MapPage } from './pages/MapPage'
+
 function App() {
-  return (
-    <div className="min-h-screen">
-      <p className="text-center p-4">Adopt-a-Tap Tracker</p>
-    </div>
-  )
+  return <MapPage />
 }
 
 export default App
